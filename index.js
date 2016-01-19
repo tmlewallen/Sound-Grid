@@ -5,7 +5,7 @@ var io = require('socket.io')(server);
 var port = process.env.PORT || 4000;
 var gridSize = {
 	row : 10,
-	col : 24
+	col : 16 
 };
 var gridState = buildEmptyGridState(gridSize); //[COLUMN][ROW] for easier iterating in client
 
@@ -17,8 +17,8 @@ app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket){
 	socket.on('connected', function(data){
-		console.log('Received \'connected\'...');
-		console.log('Emitting \'initialize\'...');
+		// console.log('Received \'connected\'...');
+		// console.log('Emitting \'initialize\'...');
 		socket.emit('initialize', {
 			size : gridSize,
 			state : gridState
@@ -26,8 +26,8 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('node clicked', function(data){
-		console.log('Received \'node clicked\'...');
-		console.log('Emitting \'toggle node\'...');
+		// console.log('Received \'node clicked\'...');
+		// console.log('Emitting \'toggle node\'...');
 		toggleNodeState(data.row,data.col);
 		io.emit('toggle node', data);
 	});

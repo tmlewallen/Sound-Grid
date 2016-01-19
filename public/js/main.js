@@ -15,12 +15,33 @@ $(function(){
 	//Variables
 	var socket = io();
 	var $table = $('.tbl');
+	var soundMap = ['a#6','f5','d#5','c#5','a#5','g#4','f4','d#4','snare_50','kick_10'];
 	var size = {};
 	var state = []; //[COLUMN][ROW] for easier access when iterating through
 	var speed = 240;//BPM
 	var animation = 'pulse';//Select an animation from animation.css, pulse works best IMO
 
 	//Initilization 
+	ion.sound({
+		sounds: [
+			{name: soundMap[0]},
+			{name: soundMap[1]},
+			{name: soundMap[2]},
+			{name: soundMap[3]},
+			{name: soundMap[4]},
+			{name: soundMap[5]},
+			{name: soundMap[6]},
+			{name: soundMap[7]},
+	        {name: soundMap[8]},
+	        {name: soundMap[9]},
+	    ],
+
+	    // main config
+	    path: "sounds/",
+	    preload: true,
+	    multiplay: true,
+	    volume: 0.9
+	});
 	socket.emit('connected',{});
 
 	//io Events
@@ -134,6 +155,7 @@ $(function(){
 	function animateColumn(colArr,col){
 		for (var i = 0; i < size.row; i++){
 			if (colArr[i]){
+				ion.sound.play(soundMap[i]);
 				$(String.format('#{0}-label',ndxToIdString(i,col))).addClass('animated ' + animation)
 				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
 					$(this).removeClass('animated ' + animation);
