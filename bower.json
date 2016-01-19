@@ -1,0 +1,24 @@
+{
+  "name": "beats",
+  "description": "A Tone Matrix Clone",
+  "main": "index.js",
+  "authors": [
+    "Thomas Lewallen"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "animate.css": "animate-css#~3.5.1"
+  }
+}

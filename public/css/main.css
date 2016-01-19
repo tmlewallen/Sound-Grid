@@ -1,0 +1,53 @@
+.tbl {
+	display : table;
+	background-color: #282828;
+	padding : 5px;
+	border-radius: 10px;
+}
+
+.tbl-row {
+	display : table-row;
+}
+
+.tbl-cell {
+	display : table-cell;
+	padding : 5px;
+}
+
+.tbl-col {
+	display : table-column;
+}
+
+.tbl-col-group{
+	display : table-column-group;
+}
+
+.active-col {
+	background-color: rgba(100,100,100,.2);
+}
+
+input[type="checkbox"] {
+	display : none;
+}
+
+input[type="checkbox"] + label {
+	cursor : pointer;
+	display : none;
+	background-color: #3A3A3A;
+	padding: 16px;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+	-webkit-animation-duration: .5s;
+	/*-webkit-animation-delay: 0s;*/
+	/*-webkit-animation-iteration-count: 1;*/
+}
+
+input[type="checkbox"]:focus + label{
+	outline: none;
+}
+
+input[type="checkbox"]:checked + label{
+	/*background-color: #CCCCCC;*/
+	background-image : linear-gradient(#CCCCCC, #FFFFFF);
+}
