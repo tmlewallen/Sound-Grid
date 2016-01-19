@@ -46,7 +46,7 @@ $(function(){
 
 	//io Events
 	socket.on('initialize', function(data){
-		console.log('Received \'initialize\'...');
+		// console.log('Received \'initialize\'...');
 		size = data.size;
 		state = data.state;
 		buildTable($table, size);
@@ -56,12 +56,12 @@ $(function(){
 	});
 
 	socket.on('toggle node',function(data){
-		console.log('Received \'toggle node\'...');
+		// console.log('Received \'toggle node\'...');
 		toggleNode(data.row, data.col);
 	});
 
 	function nodeIsClicked(row, col, socket){
-		console.log('Emitting \'node clicked\'...');
+		// console.log('Emitting \'node clicked\'...');
 		socket.emit('node clicked', {
 			'row' : row,
 			'col' : col

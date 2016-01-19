@@ -5,7 +5,7 @@ var io = require('socket.io')(server);
 var port = process.env.PORT || 4000;
 var gridSize = {
 	row : 10,
-	col : 16 
+	col : 32 
 };
 var gridState = buildEmptyGridState(gridSize); //[COLUMN][ROW] for easier iterating in client
 
