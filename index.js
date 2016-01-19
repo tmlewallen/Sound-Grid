@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-var port = 4000;
+var port = process.env.PORT || 4000;
 var gridSize = {
 	row : 10,
 	col : 24
