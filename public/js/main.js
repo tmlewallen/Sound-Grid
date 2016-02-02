@@ -33,6 +33,7 @@ $(function(){
 	    // main config
 	    path: "sounds/",
 	    multiplay: true,
+	    preload : true,
 	    volume: 0.9,
 	    ready_callback: function(){
 	    	console.log('Loaded!');
