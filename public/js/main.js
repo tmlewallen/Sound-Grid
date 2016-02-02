@@ -33,7 +33,10 @@ $(function(){
 	    // main config
 	    path: "sounds/",
 	    multiplay: true,
-	    volume: 0.9
+	    volume: 0.9,
+	    ready_callback: function(){
+	    	console.log('Loaded!');
+	    }
 	});
 	socket.emit('connected',{});
 
@@ -68,6 +71,11 @@ $(function(){
 			toggleCheckbox($element);
 			var ndx = idToIntArr($element.attr('id'));
 			nodeIsClicked(ndx[0], ndx[1], socket);
+		});
+		$('#load-sounds').on('click',function(){
+			soundMap.forEach(function(element,ndx,arr){
+				ion.sound.preload(element);
+			});
 		});
 	}
 	
