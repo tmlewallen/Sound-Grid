@@ -26,6 +26,10 @@
 	background-color: rgba(100,100,100,.2);
 }
 
+body {
+	text-align: center;
+}
+
 h1 {
 	text-align: center;
 }
