@@ -75,6 +75,7 @@ $(function(){
 		$('#load-sounds').on('click',function(){
 			soundMap.forEach(function(element,ndx,arr){
 				ion.sound.preload(element);
+				ion.sound.play(element);
 			});
 		});
 	}
