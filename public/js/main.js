@@ -32,7 +32,6 @@ $(function(){
 
 	    // main config
 	    path: "sounds/",
-	    preload: true,
 	    multiplay: true,
 	    volume: 0.9
 	});
