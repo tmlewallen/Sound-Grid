@@ -1,7 +1,7 @@
 .tbl {
 	display : table;
 	background-color: #282828;
-	padding : 5px;
+	padding : 50px;
 	border-radius: 10px;
 }
 
@@ -26,6 +26,14 @@
 	background-color: rgba(100,100,100,.2);
 }
 
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
 input[type="checkbox"] {
 	display : none;
 }
@@ -38,7 +46,7 @@ input[type="checkbox"] + label {
 	border-radius: 10px;
 	display: inline-block;
 	position: relative;
-	-webkit-animation-duration: .5s;
+	-webkit-animation-duration: .4s;
 	/*-webkit-animation-delay: 0s;*/
 	/*-webkit-animation-iteration-count: 1;*/
 }

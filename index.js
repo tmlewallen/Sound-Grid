@@ -4,8 +4,8 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 4000;
 var gridSize = {
-	row : 10,
-	col : 32 
+	row : 13,
+	col : 16 
 };
 var gridState = buildEmptyGridState(gridSize); //[COLUMN][ROW] for easier iterating in client
 

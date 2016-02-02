@@ -14,27 +14,21 @@ $(function(){
 
 	//Variables
 	var socket = io();
+	var instrumentVol = 0.6;
+	var drumVol = 0.9;
 	var $table = $('.tbl');
-	var soundMap = ['a#6','f5','d#5','c#5','a#5','g#4','f4','d#4','snare_50','kick_10'];
+	var soundMap = ['g#4','f4','d#4','c#4','a#4','g#3','f3','d#3','c#3','a#3','g#2','snare_50','kick_10'];
+	var volumeMap = [instrumentVol,instrumentVol,instrumentVol,instrumentVol,instrumentVol,instrumentVol,instrumentVol,instrumentVol,instrumentVol,instrumentVol,instrumentVol,drumVol,drumVol]
 	var size = {};
 	var state = []; //[COLUMN][ROW] for easier access when iterating through
 	var speed = 240;//BPM
 	var animation = 'pulse';//Select an animation from animation.css, pulse works best IMO
+	var sounds = [];
 
 	//Initilization 
+	sounds = buildSoundArray(soundMap,volumeMap);
 	ion.sound({
-		sounds: [
-			{name: soundMap[0]},
-			{name: soundMap[1]},
-			{name: soundMap[2]},
-			{name: soundMap[3]},
-			{name: soundMap[4]},
-			{name: soundMap[5]},
-			{name: soundMap[6]},
-			{name: soundMap[7]},
-	        {name: soundMap[8]},
-	        {name: soundMap[9]},
-	    ],
+		sounds: sounds,
 
 	    // main config
 	    path: "sounds/",
@@ -95,7 +89,7 @@ $(function(){
 		for (var i = 0; i < size.row; i++){
 			content += row;
 			for (var j = 0; j < size.col; j++){
-				content += cell + String.format(checkbox,i + '-' + j) + endTag;
+				content += cell + String.format(checkbox,ndxToIdString(i,j)) + endTag;
 			}
 			content+= endTag;
 		}
@@ -107,14 +101,25 @@ $(function(){
 		for (var i = 0; i < size.row; i++){
 			for (var j = 0; j < size.col; j++){
 				if (state[j][i]){
-					toggleCheckbox($(String.format('#{0}', ndxToIdString(i,j))));
+					toggleCheckbox(getNodeFromIndex(i,j));
 				}
 			}
 		}
 	}
 
+	function buildSoundArray(soundMap, volumeMap){
+		var arr = [];
+		for (var i = 0; i < soundMap.length; i++){
+			arr.push({
+				name : soundMap[i],
+				volume : volumeMap[i]
+			});
+		}
+		return arr;
+	}
+
 	function toggleNode(row,col){
-		var $element = $(String.format('#{0}', ndxToIdString(row,col)));
+		var $element = getNodeFromIndex(row,col);
 		toggleCheckbox($element);
 		state[col][row] = !state[col][row];
 	}
@@ -125,6 +130,10 @@ $(function(){
 			arr[ndx] = parseInt(element);
 		});
 		return arr;
+	}
+
+	function getNodeFromIndex(row,col){
+		return $(String.format('#{0}', ndxToIdString(row,col)));
 	}
 
 	function ndxToIdString(row,col){
